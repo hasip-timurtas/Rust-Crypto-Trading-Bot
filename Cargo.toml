@@ -1,6 +1,6 @@
 [package]
-authors = ["Sleeyax <yourd3veloper@gmail.com>"]
-name = "ml-crypto-trading-bot"
+authors = ["Hasip Timurtas <hasip.timurtas@gmail.com>"]
+name = "rust-crypto-trading-bot"
 version = "0.0.1"
 edition = "2021"
 
