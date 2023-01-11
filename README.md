@@ -1,27 +1,45 @@
-# :robot: ml-crypto-trading-bot
+# Crypto Trading Bot
 
-Cryptocurrency trading bot using Machine Learning and Rust. Inspired by [CyberPunkMetalHead/cryptocurrency-machine-learning-prediction-algo-trading](https://github.com/CyberPunkMetalHead/cryptocurrency-machine-learning-prediction-algo-trading).
+A cryptocurrency trading bot built using Machine Learning and Rust. This project is inspired by [CyberPunkMetalHead's cryptocurrency machine learning prediction algorithm](https://github.com/CyberPunkMetalHead/cryptocurrency-machine-learning-prediction-algo-trading).
 
-## :warning: Disclaimer
 
-This bot has been developed in response to another project and out of curiousity to see if I could build an improved version in Rust. The efficiency of the strategy itself hasn't been thoroughly tested. Use this program at your own risk!
+## Trading Bot Strategy
 
-## :book: Strategy
+### Overview
 
-The trading strategy is relatively simple:
+This trading bot uses a machine learning-based strategy to predict market movements and place buy orders based on those predictions. It fetches hourly kline (candle) data from Binance and uses a pre-trained machine learning model to predict future price movements.
 
-- Fetch the last X days of hourly kline (candle) data from Binance.
-- Train a machine learning model on the data. I'm using [LightGBM](https://lightgbm.readthedocs.io/en/v3.3.2/), which is a fast gradient boosting framework that uses tree based learning algorithms. It's not perfect and predictions aren't nearly as close to reality as other solutions like recurrent neural networks (RNN) like LSTM, but in my testing it can provide a good indicator for basic market movements (price up or down), which is all I need for this strategy.
-- Using the trained model, predict the current candle `high` price. If it's lower than the current `open` or `close` (i.e current) price, wait for the next candle and start over. Otherwise, place a buy order.
-- Finally, the bot waits for the price to go up until the the prediction is reached. If the prediction isn't reached by the end of the candle, it just waits until the prediction is reached eventually.
+### Strategy
+
+1. **Data Retrieval:**
+   - Fetch the last X days of hourly kline (candle) data from Binance.
+
+2. **Model Training:**
+   - Train a machine learning model using the historical data. The bot utilizes [LightGBM](https://lightgbm.readthedocs.io/en/v3.3.2/), a fast, tree-based gradient boosting framework. While LightGBM may not be as accurate as other models like LSTM (Recurrent Neural Networks), it provides reliable indicators of basic price movements (up or down), which is sufficient for this strategy.
+
+3. **Price Prediction:**
+   - The trained model predicts the `high` price for the current candle.
+   - If the predicted `high` price is lower than the current `open` or `close` price, the bot skips this candle and waits for the next one.
+   - If the prediction is higher, a buy order is placed.
+
+4. **Waiting for Price Target:**
+   - Once a buy order is placed, the bot waits for the price to reach the predicted `high` value.
+   - If the predicted price is not reached by the end of the candle, the bot continues to wait until the target is hit.
+
+## Tools and Technologies
+
+- **Data Source:** Binance API
+- **Machine Learning Model:** [LightGBM](https://lightgbm.readthedocs.io/en/v3.3.2/)
+  
+This strategy offers a straightforward approach to predict short-term market movements and place trades accordingly.
 
 ## 💻 Installation & usage
 
 Install [Rust](https://www.rust-lang.org/tools/install) and clone this repository:
 
 ```bash
-$ git clone https://github.com/sleeyax/ml-crypto-trading-bot.git
-$ cd ml-crypto-trading-bot
+$ git clone https://github.com/hasip-timurtas/Rust-Crypto-Trading-Bot.git
+$ cd Rust-Crypto-Trading-Bot.git
 ```
 
 Then, copy the config file and edit it accordingly (should be self-explanatory):
