@@ -1,6 +1,9 @@
 # Crypto Trading Bot
 
-A cryptocurrency trading bot built using Machine Learning and Rust. This project is inspired by [CyberPunkMetalHead's cryptocurrency machine learning prediction algorithm](https://github.com/CyberPunkMetalHead/cryptocurrency-machine-learning-prediction-algo-trading).
+A cryptocurrency trading bot built with Machine Learning and Rust. It’s designed to help automate trades by predicting market movements based on historical data from Binance. 
+
+The bot uses LightGBM, a machine learning model, to analyze price trends and decide when to place buy orders. It’s not perfect, but it’s fast and gets the job done for short-term market movements. The combination of Rust and machine learning keeps the bot efficient and reliable, making it a good option for anyone looking to try out automated crypto trading.
+
 
 
 ## Trading Bot Strategy
@@ -39,7 +42,7 @@ Install [Rust](https://www.rust-lang.org/tools/install) and clone this repositor
 
 ```bash
 $ git clone https://github.com/hasip-timurtas/Rust-Crypto-Trading-Bot.git
-$ cd Rust-Crypto-Trading-Bot.git
+$ cd Rust-Crypto-Trading-Bot
 ```
 
 Then, copy the config file and edit it accordingly (should be self-explanatory):
